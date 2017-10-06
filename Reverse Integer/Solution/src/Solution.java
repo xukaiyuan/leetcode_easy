@@ -1,0 +1,52 @@
+/**
+ * 
+ */
+
+/**
+ * @author xukaiyuan
+ *
+ */
+public class Solution {
+
+	/**
+	 * @param args
+	 */
+	
+	
+public int reverse(int x) {
+        
+        int test = Math.abs(x);
+        
+        
+        
+        
+        int lastdig = 0;
+        int re = 0;
+        int tmp = 0;
+        while(test > 0)
+        {
+            lastdig = test % 10;
+            re = tmp * 10 + lastdig;
+            test = test / 10;
+            if((re - lastdig)/10 != tmp)  
+                return 0;
+            tmp = re;
+        }
+        
+           
+        
+        
+        if(x >= 0) return re;
+        else return -re;
+        
+    }
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Solution s = new Solution();
+		int re = s.reverse(-123);
+		System.out.println(re);
+	}
+
+}

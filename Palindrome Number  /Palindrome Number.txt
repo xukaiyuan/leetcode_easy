@@ -1,0 +1,64 @@
+class Solution {
+    public boolean isPalindrome(int x) {
+        int tmp[];
+        boolean check = false;
+        if(x < 0) return false;
+        if(x == 0) return true;
+        int count = 0;
+        int test1 = x;
+        while(test1 > 0)
+        {
+            test1 = test1 / 10;
+            count++;
+        }
+        tmp = new int[count];
+        int test2 = x;
+        for(int i = count - 1; i >= 0; i--)
+        {
+            tmp[i] = test2 % 10;
+            test2 = test2 / 10;
+        }
+        
+        if(count == 1) return true;
+        
+        if(count % 2 == 0)
+        {
+            int j = 0;
+            
+            while( j <= (count/2 - 1))
+            {
+                if(tmp[j] != tmp[count - 1 - j])
+                {
+                    check = false;
+                    break;
+                }
+                
+                j++;
+                
+                check = true;
+                if( j > (count/2 - 1))
+                {
+                    j = j - 1;
+                    break;
+                }
+                
+            }
+            
+            
+            if(j == (count/2 - 1) && check) return true;
+            else return false;
+            
+        }
+        else
+        {
+            int k = 0;
+            while( k <= count/2 )
+            {
+                if(tmp[k] != tmp[count - 1 - k]) break;
+                k++;
+            }
+            if(k != count/2 + 1) return false;
+            else return true;
+        }
+    }
+}
