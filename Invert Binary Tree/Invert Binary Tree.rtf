@@ -1,0 +1,166 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Bold;\f2\fnil\fcharset0 Menlo-Regular;
+}
+{\colortbl;\red255\green255\blue255;\red38\green38\blue38;\red242\green242\blue242;\red133\green0\blue2;
+\red14\green110\blue109;}
+{\*\expandedcolortbl;;\cssrgb\c20000\c20000\c20000;\cssrgb\c96078\c96078\c96078;\cssrgb\c60000\c0\c0;
+\cssrgb\c0\c50196\c50196;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 /**\
+ * Definition for a binary tree node.\
+ * public class TreeNode \{\
+ *     int val;\
+ *     TreeNode left;\
+ *     TreeNode right;\
+ *     TreeNode(int x) \{ val = x; \}\
+ * \}\
+ */\
+class Solution \{\
+    public TreeNode invertTree(TreeNode root) \{\
+        if(root == null) return null;\
+        TreeNode left = invertTree(root.right);\
+        TreeNode right = invertTree(root.left);\
+        root.left = left;\
+        root.right = right;\
+        return root;\
+    \}\
+\}\
+\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f1\b\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 public
+\f2\b0  TreeNode 
+\f1\b \cf4 \strokec4 invertTree\cf2 \strokec2 (
+\f2\b0 TreeNode root
+\f1\b )
+\f2\b0  
+\f1\b \{
+\f2\b0 \
+    
+\f1\b if
+\f2\b0  
+\f1\b (
+\f2\b0 root 
+\f1\b ==
+\f2\b0  
+\f1\b null)
+\f2\b0  
+\f1\b return
+\f2\b0  
+\f1\b null;
+\f2\b0 \
+    Queue
+\f1\b <
+\f2\b0 TreeNode
+\f1\b >
+\f2\b0  queue 
+\f1\b =
+\f2\b0  
+\f1\b new
+\f2\b0  LinkedList
+\f1\b <
+\f2\b0 TreeNode
+\f1\b >();
+\f2\b0 \
+    queue
+\f1\b .
+\f2\b0 \cf5 \strokec5 add
+\f1\b \cf2 \strokec2 (
+\f2\b0 root
+\f1\b );
+\f2\b0 \
+    
+\f1\b while
+\f2\b0  
+\f1\b (!
+\f2\b0 queue
+\f1\b .
+\f2\b0 \cf5 \strokec5 isEmpty
+\f1\b \cf2 \strokec2 ())
+\f2\b0  
+\f1\b \{
+\f2\b0 \
+        TreeNode current 
+\f1\b =
+\f2\b0  queue
+\f1\b .
+\f2\b0 \cf5 \strokec5 poll
+\f1\b \cf2 \strokec2 ();
+\f2\b0 \
+        TreeNode temp 
+\f1\b =
+\f2\b0  current
+\f1\b .
+\f2\b0 \cf5 \strokec5 left
+\f1\b \cf2 \strokec2 ;
+\f2\b0 \
+        current
+\f1\b .
+\f2\b0 \cf5 \strokec5 left\cf2 \strokec2  
+\f1\b =
+\f2\b0  current
+\f1\b .
+\f2\b0 \cf5 \strokec5 right
+\f1\b \cf2 \strokec2 ;
+\f2\b0 \
+        current
+\f1\b .
+\f2\b0 \cf5 \strokec5 right\cf2 \strokec2  
+\f1\b =
+\f2\b0  temp
+\f1\b ;
+\f2\b0 \
+        
+\f1\b if
+\f2\b0  
+\f1\b (
+\f2\b0 current
+\f1\b .
+\f2\b0 \cf5 \strokec5 left\cf2 \strokec2  
+\f1\b !=
+\f2\b0  
+\f1\b null)
+\f2\b0  queue
+\f1\b .
+\f2\b0 \cf5 \strokec5 add
+\f1\b \cf2 \strokec2 (
+\f2\b0 current
+\f1\b .
+\f2\b0 \cf5 \strokec5 left
+\f1\b \cf2 \strokec2 );
+\f2\b0 \
+        
+\f1\b if
+\f2\b0  
+\f1\b (
+\f2\b0 current
+\f1\b .
+\f2\b0 \cf5 \strokec5 right\cf2 \strokec2  
+\f1\b !=
+\f2\b0  
+\f1\b null)
+\f2\b0  queue
+\f1\b .
+\f2\b0 \cf5 \strokec5 add
+\f1\b \cf2 \strokec2 (
+\f2\b0 current
+\f1\b .
+\f2\b0 \cf5 \strokec5 right
+\f1\b \cf2 \strokec2 );
+\f2\b0 \
+    
+\f1\b \}
+\f2\b0 \
+    
+\f1\b return
+\f2\b0  root
+\f1\b ;
+\f2\b0 \
+
+\f1\b \}
+\f2\b0 \
+}

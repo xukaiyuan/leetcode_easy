@@ -1,0 +1,100 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Bold;\f2\fnil\fcharset0 Menlo-Regular;
+}
+{\colortbl;\red255\green255\blue255;\red38\green38\blue38;\red242\green242\blue242;\red133\green0\blue2;
+\red14\green110\blue109;}
+{\*\expandedcolortbl;;\cssrgb\c20000\c20000\c20000;\cssrgb\c96078\c96078\c96078;\cssrgb\c60000\c0\c0;
+\cssrgb\c0\c50196\c50196;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 /**\
+ * Definition for singly-linked list.\
+ * public class ListNode \{\
+ *     int val;\
+ *     ListNode next;\
+ *     ListNode(int x) \{ val = x; \}\
+ * \}\
+ */\
+class Solution \{\
+    public ListNode reverseList(ListNode head) \{\
+        ListNode pre = null;\
+        ListNode cur = head;\
+        while(cur != null)\
+        \{\
+            ListNode tmp = cur.next;\
+            cur.next = pre;\
+            pre = cur;\
+            cur = tmp;\
+        \}\
+        return pre;\
+    \}\
+\}\
+\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f1\b\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 public
+\f2\b0  ListNode 
+\f1\b \cf4 \strokec4 reverseList\cf2 \strokec2 (
+\f2\b0 ListNode head
+\f1\b )
+\f2\b0  
+\f1\b \{
+\f2\b0 \
+    
+\f1\b if
+\f2\b0  
+\f1\b (
+\f2\b0 head 
+\f1\b ==
+\f2\b0  
+\f1\b null
+\f2\b0  
+\f1\b ||
+\f2\b0  head
+\f1\b .
+\f2\b0 \cf5 \strokec5 next\cf2 \strokec2  
+\f1\b ==
+\f2\b0  
+\f1\b null)
+\f2\b0  
+\f1\b return
+\f2\b0  head
+\f1\b ;
+\f2\b0 \
+    ListNode p 
+\f1\b =
+\f2\b0  reverseList
+\f1\b (
+\f2\b0 head
+\f1\b .
+\f2\b0 \cf5 \strokec5 next
+\f1\b \cf2 \strokec2 );
+\f2\b0 \
+    head
+\f1\b .
+\f2\b0 \cf5 \strokec5 next
+\f1\b \cf2 \strokec2 .
+\f2\b0 \cf5 \strokec5 next\cf2 \strokec2  
+\f1\b =
+\f2\b0  head
+\f1\b ;
+\f2\b0 \
+    head
+\f1\b .
+\f2\b0 \cf5 \strokec5 next\cf2 \strokec2  
+\f1\b =
+\f2\b0  
+\f1\b null;
+\f2\b0 \
+    
+\f1\b return
+\f2\b0  p
+\f1\b ;
+\f2\b0 \
+
+\f1\b \}
+\f2\b0 \
+}
