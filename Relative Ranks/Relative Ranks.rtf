@@ -1,0 +1,59 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 class Solution \{\
+    public String[] findRelativeRanks(int[] nums) \{\
+        String[] res= new String[nums.length];\
+        int[] index = new int[nums.length];\
+        for(int i = 0; i < nums.length; i++)\
+        \{\
+            index[i] = i;\
+        \}\
+        sortWithIndex(nums, index, 0, nums.length - 1);\
+        for(int i = 0; i < nums.length; i++)\
+        \{\
+            if(i == 0) res[index[i]] = "Gold Medal";\
+            else if(i == 1) res[index[i]] = "Silver Medal";\
+            else if(i == 2) res[index[i]] = "Bronze Medal";\
+            else res[index[i]] = Integer.toString(i + 1);\
+        \}\
+        return res;\
+    \}\
+    \
+    public void sortWithIndex(int[] nums, int[] index, int start, int end)\
+    \{\
+        if(start < end)\
+        \{\
+            int flag = nums[start];\
+            int i = start;\
+            for(int j = start + 1; j <= end; j++)\
+            \{\
+                if(nums[j] > flag)\
+                \{\
+                    int tmp = nums[j];\
+                    nums[j] = nums[i+ 1];\
+                    nums[i + 1] = tmp;\
+                    \
+                    int indexTmp = index[j];\
+                    index[j] = index[i + 1];\
+                    index[i + 1] = indexTmp;\
+                    \
+                    i++;\
+                \}\
+                \
+            \}\
+            nums[start] = nums[i];\
+            nums[i] = flag;\
+            int itmp = index[start];\
+            index[start] = index[i];\
+            index[i] = itmp;\
+            \
+            sortWithIndex(nums, index, start, i - 1);\
+            sortWithIndex(nums, index, i + 1, end);\
+        \}\
+    \}\
+\}}
